@@ -1,5 +1,7 @@
 const facts = require('./facts.json')
 
+const facts = require('./facts.json')
+
 const express = require('express')
 const app = express()
 
