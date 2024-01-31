@@ -1,7 +1,5 @@
 const facts = require('./facts.json')
 
-const facts = require('./facts.json')
-
 const express = require('express')
 const app = express()
 
@@ -75,10 +73,15 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
 app.get('/pandorasbox', (req, res)=> {
 
     // do the work
+
+    // Random Dad Joke
+
     // Random Fact Work
     const length = facts.length
     const random = Math.floor(Math.random() * length)
     const ranfact = facts[random].fact
+
+    // Random Image Work
 
     res.render('pandorasbox', {title: "Pandora's Box", message:ranfact} )
 
