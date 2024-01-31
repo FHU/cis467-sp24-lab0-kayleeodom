@@ -75,14 +75,26 @@ app.get('/pandorasbox', (req, res)=> {
     // do the work
 
     // Random Dad Joke
+    let Joke = []
+
+    fetch("https://icanhazdadjoke.com/", {
+        headers: {
+            "Accept": "application/json"
+        }
+        })
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data)
+            res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
+        })
 
     // Random Fact Work
-    const length = facts.length
-    const random = Math.floor(Math.random() * length)
-    const ranfact = facts[random].fact
+    // const length = facts.length
+    // const random = Math.floor(Math.random() * length)
+    // const ranfact = facts[random].fact
 
-    // Random Image Work
+    // // Random Image Work
 
-    res.render('pandorasbox', {title: "Pandora's Box", message:ranfact} )
+    // res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
 
 })
