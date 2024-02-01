@@ -72,29 +72,30 @@ app.get('/math/:num1/:op/:num2', (req, res)=> {
 // http://localhost:3000/pandorasbox 
 app.get('/pandorasbox', (req, res)=> {
 
-    // do the work
+    // do the work (randomizer)
+    const rand = Math.random()
 
-    // Random Dad Joke
-    let Joke = []
+    if(rand < 0.5){
+        // Random Dad Joke
+        let Joke = []
+    
+        fetch("https://icanhazdadjoke.com/", {
+            headers: {
+                "Accept": "application/json"
+            }
+            })
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data)
+                res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
+            })
+    } else{
+        //Random Fact Work
+        const length = facts.length
+        const random = Math.floor(Math.random() * length)
+        const ranfact = facts[random].fact
 
-    fetch("https://icanhazdadjoke.com/", {
-        headers: {
-            "Accept": "application/json"
-        }
-        })
-        .then(res => res.json())
-        .then((data) => {
-            console.log(data)
-            res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
-        })
-
-    // Random Fact Work
-    // const length = facts.length
-    // const random = Math.floor(Math.random() * length)
-    // const ranfact = facts[random].fact
-
-    // // Random Image Work
-
-    // res.render('pandorasbox', {title: "Pandora's Box", message: data.joke} )
+        res.render('pandorasbox', {title: "Pandora's Box", message: ranfact} )
+    }
 
 })
