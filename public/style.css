@@ -1,15 +1,18 @@
 body {
     text-align: center;
-
+    background-color: rgb(159, 161, 223);
 }
 
 h1 {
     border-bottom: 3px solid black;
     padding-bottom: 8px;
     font-weight: bolder;
+    font-size: 44px;
 }
 
 h2 {
-    text-align: left;
+    display: flex;
+    justify-content: center;
     padding-left: 20px;
+    font-size: xx-large;
 }
